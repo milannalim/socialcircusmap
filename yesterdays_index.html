@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta name="description" content="A website that shows social circus projects all around the globe!">
+		<meta name="Milan Freund">
+		<!-- facebook image if posted-->
+		<meta property="og:image" content="img/thumbnail_for_sharing.png">
+		<!--small icon at tab bar -->
+		<link rel="icon" href="img/worldwide.svg">	
+		<!-- Icon made by turccub <a href="https://www.flaticon.com/authors/turkkub" title="turkkub">turkkub</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>-->    
+		<title>social circus map</title>
+		<!-- Bootstrap core CSS -->
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<!-- Custom styles for this template -->
+		<link href="css/main.css" rel="stylesheet"> 
+		<!-- Leaflet  -->
+		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" />
+		<script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>  	  
+		<!-- Leaflet Plugin: MarkerCluster: -->	
+		<link rel="stylesheet" href="libs/leaflet_markercluster/MarkerCluster.css">
+		<link rel="stylesheet" href="libs/leaflet_markercluster/MarkerCluster.Default.css">
+		<script src="libs/leaflet_markercluster/leaflet.markercluster.js"></script>	
+		<!-- array that has the info about the circus projects -->
+        <script src="data/zirkusArray.js"></script>
+        <!-- font awesome -->
+        <link rel="stylesheet" href="libs/font-awesome-4.7.0/css/font-awesome.min.css">
+    	  
+	</head>
+  	<body>
+        <!-- bootstrap 4 nav bar -->
+		<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+			<a class="navbar-brand" href="index.html" data-toggle="tooltip" title="reload the page">social circus map</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
+		  	<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarsExample03">
+		  		<ul class="navbar-nav mr-auto">
+					<li class="nav-item">
+						<a class="nav-link" href="about.html" data-toggle="tooltip" title="information about this project">about</a>
+					</li>
+
+					<li class="nav-item">
+						<!-- trigger modal -->
+						<a  class="nav-link" data-toggle="modal" data-target="#exampleModalCenter" style="cursor:pointer" data-toggle="tooltip" title="if you want to add a project click here and fill a form">add a project</a>  
+						<!-- Modal -->
+						<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+							<div class="modal-dialog modal-dialog-centered" role="document">
+							<div class="modal-content">
+								<div class="modal-header">
+								<h5 class="modal-title" id="exampleModalCenterTitle">add a project</h5>
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+								</div>
+								<div class="modal-body">
+									<form action="/action_page.php">
+										<div class="form-group">
+										  <label for="newName" data-toggle="tooltip" title="Write the name of the project you want to add here. For example: Sirko Fantastiko.">name:</label>
+										  <input type="text" class="form-control" id="newName" placeholder="name of the circus.." data-toggle="tooltip" title="Write the name of the project you want to add here. For example: Sirko Fantastiko.">
+										</div>
+										<div class="form-group">
+											<label for="newCity" data-toggle="tooltip" title="Write the city or village where the circus is located at. For example: Istanbul">city:</label>
+											<input type="text" class="form-control" id="newCity" placeholder="city or village.." data-toggle="tooltip" title="Write the city or village where the circus is located at. For example: Istanbul.">
+										</div>
+										<div class="form-group">
+											<label for="newCountry" data-toggle="tooltip" title="Write the country where the circus is located at. For example: Turkey.">country:</label>
+											<input type="text" class="form-control" id="newCountry" placeholder="country.." data-toggle="tooltip" title="Write the country where the circus is located at. For example: Turkey.">
+										</div>
+										<div class="form-group">
+											<label for="newAddress" data-toggle="tooltip" title="Write the adress where your project can be found (street name and number). For example: Çukur Mahallesi Zerdali Sok, Tarlabaşı Blv No.9, 34435 Beyoğlu, Türkei.">adress:</label>
+											<input type="text" class="form-control" id="newAddress" placeholder="adress.." data-toggle="tooltip" title="Write the adress where your project can be found (street name and number). For example: Çukur Mahallesi Zerdali Sok, Tarlabaşı Blv No.9, 34435 Beyoğlu, Türkei.">
+										</div>
+										<div class="form-group">
+											<label for="newLink" data-toggle="tooltip" title="Copy and paste the link to the projects website or facebook page. For example: https://www.facebook.com/Sirko-Fantastiko-183372812260322/">link to projects website:</label>
+											<input type="text" class="form-control" id="newLink" placeholder="link.." data-toggle="tooltip" title="Copy and paste the link to the projects website or facebook page. For example: https://www.facebook.com/Sirko-Fantastiko-183372812260322/">
+										</div>
+										<div class="form-group">
+											<label for="newContact" data-toggle="tooltip" title="Please fill in your email adress, just in case any questions or problems occur .">email address:</label>
+											<input type="text" class="form-control" id="newContact" placeholder="contact email.." data-toggle="tooltip" title="Please fill in your email adress, just in case any questions or problems occur.">
+										</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-secondary" data-dismiss="modal" data-toggle="tooltip" title="Close this window. Back to map without adding a new project.">Close</button>
+											<button type="submit" class="btn btn-primary" data-toggle="tooltip" title="Check if all the information is correct. Click here to submit.">Submit</button>
+										</div>
+									  </form>								
+							</div>
+						</div>
+						</div>	
+					</li>
+				</ul>
+				<!-- search form -->				  
+		  		<form class="form-inline my-2 my-md-0" id="inputForm" onSubmit="return false;">
+                    <input id="txtSearch" class="form-control" type="text" placeholder="Search.." data-toggle="tooltip" title="searchresults will also be listed below the map">
+                    <button id="clearInput" class="btn bg-transparent" style="margin-left: -40px; z-index: 100;" data-toggle="tooltip" title="clears the input, all projects will be shown again">
+                        <i class="fa fa-times"></i>
+                    </button>
+		  		</form>
+			</div>
+        </nav>
+
+		<!-- map container div    -->
+		<div id = "map" class="jumbotron"></div>
+		<!-- project count div -->
+		<div id="projectCount">Current number of projects: <span id="noOfProjects"></span></div>
+		<!-- search results div-->
+		<div id="searchResults"></div>
+		<!-- Footer -->
+		<footer class="page-footer font-small teal pt-4">
+		<!-- Copyright -->
+			<div class="footer-copyright text-center py-3">© 
+				<script>document.write(new Date().getFullYear()+" ")</script>
+				Copyright:<a href="https://www.cirquedusoleil.com/citizenship" target="_blank"> Cirque du Soleil</a><span> and Milan Freund</span>
+			</div>
+		</footer>  
+		
+		<!-- js -->
+		<script>		
+			////////////// map container////////////////// 
+			var map = L.map('map', {
+				center: [ 32.84267363195431,0],
+				zoom: 2
+			});
+			
+			// create stamen watercolor layer //
+			var stamen_Watercolor = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.{ext}', {
+			attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+			subdomains: 'abcd',
+			minZoom: 1,
+			maxZoom: 16,
+			ext: 'jpg'
+			});
+			
+			// create osm basemap layer //
+			var osm = L.tileLayer('https://{s}.tile.openstreetmap.de/tiles/osmde/{z}/{x}/{y}.png', {
+			maxZoom: 18,
+			attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+			});
+		
+        	// add stamen layer as basemap //
+			stamen_Watercolor.addTo( map );
+
+        	// eventlistener to get the zoomlevel //
+        	map.addEventListener("zoomend", changeBasemap);
+			function changeBasemap() {
+            	const zoomLevel = map.getZoom();
+            // if the zoomlevel is under 5 show osm as basemap for more details //
+            	if ( zoomLevel < 4 && map.hasLayer(osm) ) {
+                	map.removeLayer(osm);
+                	stamen_Watercolor.addTo(map);
+                	return;
+            	}
+            // if the zoomlevel is greater 4 show stamen basemap for more beauty and less nation states //
+            	if ( zoomLevel > 3 && map.hasLayer(stamen_Watercolor) ) {
+                	map.removeLayer(stamen_Watercolor);
+                	osm.addTo(map);
+                	return;
+            	}
+        	}
+
+			// add empty marker cluster group before actually adding the point data // 
+			var markers = L.markerClusterGroup({
+				maxClusterRadius: 30
+			});
+			markers.addTo(map);
+
+				function searchCircus() { 
+                    markers.clearLayers()
+					var inputText = document.getElementById('txtSearch').value.toLowerCase(); 						
+					//console.log('searched for:', inputText);
+					var searchArray = []; 
+
+                    if (inputText === "") {
+
+			            for (i=0; i < zirkusArray.length; i++) {
+			
+				            var lat = zirkusArray[i][1].toFixed(4);
+				            var lon = zirkusArray[i][2].toFixed(4);
+				            var zirkusName = zirkusArray[i][0];
+				            var zirkusCity = zirkusArray[i][3];
+				            var zirkusCountry = zirkusArray[i][4];
+				            var zirkusLink = zirkusArray[i][5];
+		
+				            //variable für den marker anlegen
+				            var zirkusMarker = L.marker([lat, lon]); 
+				            //die marker der clustergruppe hinzufügen
+				            markers.addLayer(zirkusMarker);
+				
+				            // Popup mit HTML erstellen  // Popup an Marker anbinden	
+				            zirkusMarker.bindPopup('<a href="'+zirkusLink+'" target="_blank">'+zirkusName+'</a>' + '<br>' + zirkusCity + ', ' + zirkusCountry);
+                            // in case the linklist is not clear.. clear it //
+                            document.getElementById("searchResults").innerHTML = '';    									
+				        }
+
+                    } else {
+
+					for (i = 0; i < zirkusArray.length; i++) {
+						var name = zirkusArray[i][0].toLowerCase();
+                        var lat = zirkusArray[i][1];
+					    var lon = zirkusArray[i][2];                       
+                        var city = zirkusArray[i][3].toLowerCase();
+						var country = zirkusArray[i][4].toLowerCase();
+                        var zirkusLink = zirkusArray[i][5];
+				        if ( (name.indexOf(inputText) != -1) || (city.indexOf(inputText) != -1)  || (country.indexOf(inputText) != -1)) {				 
+				        //	console.log('Found!');
+				        searchArray.push(zirkusArray[i]);
+				        }											
+			        }
+						searchArray = searchArray.sort();
+			            console.log(searchArray);
+                        for (i=0; i < searchArray.length; i++) {
+                            var name = searchArray[i][0].toLowerCase();
+                            var lat = searchArray[i][1];
+					        var lon = searchArray[i][2];                       
+                            var city = searchArray[i][3].toLowerCase();
+						    var country = searchArray[i][4].toLowerCase();
+                            var zirkusLink = searchArray[i][5];
+                        
+                        	//variable für den marker anlegen
+			                var zirkusMarker = L.marker([lat, lon]); 
+				            //add markers to clustergroup
+				            markers.addLayer(zirkusMarker);
+				
+				            // edit poput  // bind to markers //	
+				            zirkusMarker.bindPopup('<a href="'+zirkusLink+'" target="_blank">'+name+'</a>' + '<br>' + city + ', ' + country);								
+                        }
+			
+			            document.getElementById("searchResults").innerHTML = '<h4>'+"Searched for: "+inputText+'</h4>'+'<p>'+"Click on the links to visit the project homepgages."+'<br>'+"Or change your search."+'</p>'+'<input id="txtSearchBelow" class="form-control" type="text" placeholder="Search..">'+'<br>';
+						//console.log("searchbar");
+						
+						var inputBelow = document.getElementById("txtSearchBelow");
+						console.log(inputBelow);
+						console.log('Bis hierher läuft es noch ganz gut.');
+						var element = document.getElementById("txtSearchBelow");
+ 
+ 						//If it isn't "undefined" and it isn't "null", then it exists.
+ 							if(typeof(element) != 'undefined' && element != null){	 							
+								 setTimeout(function() {
+  								// Code executed after 2 seconds as there was a problem before  								
+								
+								var inputBelow = document.getElementById("txtSearchBelow");
+								inputBelow.value = inputText
+								inputBelow.addEventListener("keyup", function(event) {
+		                				// Number 13 is the "Enter" key on the keyboard
+		                				if (event.keyCode === 13) {
+			            				// Cancel the default action, if needed
+			            				event.preventDefault();
+			            				document.getElementById("txtSearch").value = inputBelow.value;
+										searchCircus();
+		            					}
+		        					});  
+								}, 1000);
+ 							} else{
+	 							console.log('Element does not exist!');
+				 			}
+						
+			            searchArray.forEach(fillSearchList);
+			            function fillSearchList(item, index) {
+			                document.getElementById("searchResults").innerHTML += '<a href="' +item[5] + '" target="_blank">' +item[0]+ '</a><br>';
+                        }
+	            }}
+
+		        // Get the input field
+		        var input = document.getElementById("txtSearch");
+		        // Execute a function when the user releases a key on the keyboard
+		        input.addEventListener("keyup", function(event) {
+		                // Number 13 is the "Enter" key on the keyboard
+		                if (event.keyCode === 13) {
+			            // Cancel the default action, if needed
+			            event.preventDefault();
+			            searchCircus();
+		            }
+		        });
+
+                // call the function to initially fill the map with the markers //
+                searchCircus(); 
+
+                // clear the search field on x-button click //
+                var clearIt = document.getElementById("clearInput");
+                clearIt.addEventListener("mouseup", function(){
+                    document.getElementById("txtSearch").value = "";
+                    searchCircus();
+                    document.getElementById("txtSearch").focus();
+				});
+				
+
+				projectCount = zirkusArray.length;
+				document.getElementById("noOfProjects").innerHTML = projectCount;
+
+
+
+
+    </script>
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->    
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="libs/jquery-slim.min.js"><\/script>')</script>
+    <script src="libs/popper.min.js"></script>
+    <script src="libs/bootstrap.min.js"></script>
+	</body>
+  </html>

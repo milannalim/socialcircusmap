@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="A website that shows social circus projects all around the globe!">
+    <meta name="author" content="Milan Freund">
+    <!--small icon at tab bar -->
+	<link rel="icon" href="img/worldwide.svg">	
+	<!-- Icons made by <a href="https://www.flaticon.com/authors/turkkub" title="turkkub">turkkub</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>-->  
+    <title>social circus map</title>
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="css/main.css" rel="stylesheet"> 
+	<!-- Leaflet  -->
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" />
+	<script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>  	  
+	<!-- Leaflet Plugin: MarkerCluster: -->	
+	<link rel="stylesheet" href="libs/leaflet_markercluster/MarkerCluster.css">
+	<link rel="stylesheet" href="libs/leaflet_markercluster/MarkerCluster.Default.css">
+	<script src="libs/leaflet_markercluster/leaflet.markercluster.js"></script>	
+	<!-- array that has the info about the circus projects -->
+	<script src="data/zirkusArray.js"></script>    	  
+  </head>
+  <body>
+    <!-- navbar -->
+	<div id="topheader">  
+      <nav class="navbar fixed-top navbar-expand-sm navbar-dark bg-dark">
+        <a class="navbar-brand" href="index.html">social circus map</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarsExample03">
+          <ul id="selectLanguage" class="navbar-nav mr-auto">
+			
+			<li id="about_map2" class="active nav-item">
+			  <a class="nav-link" href="about.html">map 2.0</a>	
+			</li>
+
+            <li id="button_eng" class="nav-item">
+              <a class="nav-link" href="#about_eng">english</a>
+            </li>
+			
+			<li id="button_fra" class="nav-item">
+              <a class="nav-link" href="#about_fr">francais</a>
+            </li>
+		    <li class="nav-item">
+              <a class="nav-link" href="#about_sp">español</a>
+            </li>
+		    <li class="nav-item">
+              <a class="nav-link" href="#about_pt">português</a>
+            </li>     
+          </ul>       
+        </div>
+      </nav>
+	</div>	
+      <main role="main">
+        <div class="jumbotron">
+          <div class="col-sm-8 mx-auto">
+			<!-- milan -->
+			<br id="about_map2.0">
+			<h1>THE SOCIAL CIRCUS MAP 2.0</h1>
+			<p>After working for more than a decade with social circuses, I am still often inspired looking at the social circus map made by Cirque Du Monde. It taught me that social circus exists all over the globe. And I hope that someday I will visit Iglooliks circus in northern Canada - a place I only learned about through the social circus map. Thank you for creating that webpage. It made me dream, and it made me happy.</p>
+			<p>Over the years the map was not updated as much. I noticed it had links to projects which do not exist anymore, or links to webpages that need to be changed, and even a lot of amazing projects that were missing. I started checking all the links (>400) and created social circus map 2.0. I started programming and I was happy working on supporting this project. I hope it will make people dream, feel connected and inspired.</p>
+			<p>If your project is not listed or your listed project does not exist anymore please send me an email, I will update the map.</p>
+			<p>If you need a web programmer or want to buy me a coffee or help me buy my ticket to Igloolik please send me an email. If you have ideas to improve this page send me an email.</p>
+			<p>It was a lot of work, I totally overesthimated my capacities. And I am very happy to be done.</p>
+			<p>socialcircusmap@gmail.com</p>
+			<p><img src="img/me_linnahall.png" class="rounded float-left" alt="here could be my foto.." width="200px" style="margin: 0px 20px 0px 0px" ></p>
+			<p>I hope that cirque du monde will host this webpage and it will go <a href="https://www.cirquedusoleil.com/citizenship/social-circus-map" target="_blank">where it belongs</a>. This is a test and a chance for everybody to write me an email and have their projects or projects you know about mapped as well.</p>		
+			<p>All the best, Milan.</p>
+			<br>
+			<br>
+			<br>
+			<br>
+			<!--english -->
+			<br id="about_eng">  
+			<br>
+			<br>
+            <h1>THE SOCIAL CIRCUS MAP BY CIRQUE DU MONDE</h1>
+            <p>The Social Circus Map uses an online map to plot and index organizations offering social circus workshops. It is the result of efforts made over the last few years by Cirque du Monde— the social circus program of Cirque du Soleil—to compile a record of all organizations dedicated to this form of intervention as well as the various research projects in progress on this topic. Today, Cirque du Monde is pleased to share this with the community at large.</p>
+            <p>The Social Circus Map does not claim to be exhaustive or definitive. It is intended to evolve in line with the development of the social circus community and the contribution of its players. Furthermore, the Social Circus Map does not seek to certify the quality of organizations’ social circus activities. Rather, it intends to inform the community of the existence of such activities, regardless of practices.</p>
+            <p>If you know of one or more social circus organizations not included in the Social Circus Map, please contact us at the following address: cirquedumonde@cirquedusoleil.com. Likewise, if you would like to point out any errors or inaccuracies in the information about any organization indexed in the Social Circus Map, contact us at the following address: cirquedumonde@cirquedusoleil.com. Please allow up to 8 weeks before the addition or correction is completed.</p>
+			<br>
+			<h2>IDENTIFICATION CRITERIA</h2>  
+			<p>The organizations included in the Social Circus Map have been identified based on the following criteria:</p>
+			<ul>
+			  <li>As part of its activities, the organization offers a social circus program, with the personal and social development of the participants as its primary goal.</li>
+			  <li>Cirque du Monde has been able to collect sufficient facts regarding the organization’s social circus activities, either via its website or based on information provided by the organization itself.</li>
+			</ul>	
+			<br>
+			<h2>TERMS OF USE</h2>
+			<p>The geographical information presented on the Social Circus Map is approximate. It is based on the best knowledge of Cirque du Monde and subject to the parameters of the Google Maps online mapping service. Cirque du Monde and Cirque du Soleil may not be held responsible for any errors or inaccuracies contained in the Social Service Map or any damage that may occur through its use.</p>
+			<p>The Social Circus Map may be used for your personal requirements or for training or research purposes. Any other use of the Social Circus Map must have the prior approval of Cirque du Monde. You may contact us at the following address: cirquedumonde@cirquedusoleil.com.</p>
+            <p>Cirque du Monde reserves the right to alter the content of the Social Circus Map and its terms of use at any time and at its sole discretion.</p> 
+			<br>
+			<br>
+			<br id="about_fr">
+			<br>
+			<br>  
+			<!-- francais -->  
+			<h1 >LA CARTOGRAPHIE DU CIRQUE SOCIAL DE CIRQUE DU MONDE</h1>
+			<p>La Cartographie du cirque social répertorie, sur une carte du monde en ligne, les organismes offrant des ateliers de cirque social. Elle est le fruit d’efforts déployés au cours des dernières années par Cirque du Monde, le programme de cirque social du Cirque du Soleil, visant à recenser les organismes dédiés à ce mode d’intervention ainsi que les différents projets de recherche en cours sur le sujet. Cirque du Monde est aujourd’hui heureux de la partager à l’ensemble de la communauté. </p>
+			<p>La Cartographie du cirque social ne prétend pas être exhaustive ou définitive. Elle est appelée à évoluer en fonction du développement de la communauté cirque social et de la contribution de ses acteurs. De plus, la Cartographie du cirque social ne vise pas à certifier la qualité des activités de cirque social au sein des organismes. Elle cherche plutôt à informer la communauté quant à l’existence de ses activités, sans égard aux pratiques. </p>
+			<p>Si vous connaissez un ou plusieurs organismes de cirque social absents de la Cartographie du cirque social, nous vous invitons à nous joindre à l’adresse suivante, cirquedumonde@cirquedusoleil.com. Par ailleurs, si vous souhaitez nous faire part d’erreur ou d’imprécisions quant aux coordonnées d’un ou de plusieurs des organismes présentés dans la Cartographie cirque social, nous vous invitons également à nous joindre à l’adresse suivante, cirquedumonde@cirquedusoleil.com. Veuillez prévoir un délai de 4 à 8 semaines avant que l’ajout ou la correction soit complétés. </p>
+			<br>
+			<h2>CRITÈRES D’IDENTIFICATION -</h2>
+			<p>Les organismes de cirue social représentés dans la Cartographie du cirque social ont été identifiés à partir des critères suivants : </p>  
+			<ul>
+			  <li>L’organisme, dans le cadre de ses activités, offre un volet de cirque social, dont l’intention première est le développement personnel et social des participants. </li>
+			  <li>Cirque du Monde a été en mesure de recueillir suffisamment d’informations relatives aux activités de cirque social de l’organisme, soit à partir de leurs pages Internet ou encore à partir de renseignements fournis par ce dernier. </li>
+			</ul>
+			<br>
+			<h2>CONDITIONS D’UTILISATION</h2>
+			<p>Les coordonnées géographiques présentées dans la Cartographie du cirque social sont approximatives. Elles ont été déterminées au meilleur de la connaissance de Cirque du Monde et en fonction des paramètres offerts par le service de cartographie en ligne Google Maps. Cirque du Monde et Cirque du Soleil ne peuvent être tenus responsables de toutes erreurs ou imprécisions contenues dans la Cartographie du cirque social ou de tout dommage découlant de son utilisation.</p>
+			<p>Vous pouvez utiliser la Cartographie du cirque social pour vos besoins personnels ou à des fins de formation et de recherche. Toute autre utilisation de la Cartographie du cirque social requiert l'approbation préalable de Cirque du Monde. Vous pouvez nous contacter à l’adresse suivante: cirquedumonde@cirquedusoleil.com.</p>
+			<br>
+			<br>
+			<br id ="about_sp">  
+			<br>
+			<br>  
+			<!-- spanish -->  
+			<h1>CARTOGRAFÍA DEL CIRCO SOCIAL DE CIRQUE DU MONDE</h1>
+			<p>La Cartografía del circo social utiliza un mapamundi en línea para organizar y hacer un índice con las organizaciones que ofrecen talleres de circo social. Esto es el resultado de los esfuerzos que ha realizado, durante los últimos años, el Cirque du Monde (programa de circo social del Cirque du Soleil) para compilar un registro con todas las organizaciones que se dedican a este tipo de intervenciones, además de los diferentes proyectos de investigación que se están llevando a cabo sobre este tema. Hoy, Cirque du Monde se complace de compartir este proyecto con el público en general. </p>
+			<p>No se pretende que la Cartografía del circo social sea exhaustiva o definitiva. Se espera que este evolucione junto con el desarrollo de la comunidad de circo social y según la contribución de sus protagonistas. Además, con la Cartografía del circo social no se pretende certificar la calidad de las actividades de circo social de las organizaciones. Más bien, se pretende informar a la comunidad sobre la existencia de estas actividades, independientemente de sus prácticas.</p>
+			<p>Si usted sabe de una o más organizaciones de circo social que no estén incluidas en la Cartografía del circo social, comuníquese con nosotros a través de la siguiente dirección: cirquedumonde@cirquedusoleil.com. Igualmente, si desea señalar errores o imprecisiones en la información sobre alguna organización incluida en la Cartografía del circo social, comuníquese con nosotros a través de la siguiente dirección: cirquedumonde@cirquedusoleil.com. Sírvase preveer un plazo de 4 a 8 semanas antes que la adición o la corrección sea completada. </p>
+			<br>
+			<h2>CRITERIOS DE IDENTIFICACIÓN</h2>
+			<p>Las organizaciones incluidas en la Cartografía del circo social se identificaron según los siguientes criterios:</p>  
+			<ul>
+			  <li>Como parte de sus actividades, las organizaciones ofrecen un programa de circo social que tiene como objetivo principal el desarrollo personal y social de los participantes.</li>
+			  <li>Cirque du Monde recabó una cantidad suficiente de información sobre las actividades de circo social de la organización, tanto a través de su sitio web como a través de la información proporcionada por la misma organización.</li>
+			</ul>
+			<br>
+			<h2>CONDICIONES DE USO</h2>
+			<p>La información geográfica que se presenta en la Cartografía del circo social es aproximada. Está basada en el mejor conocimiento del Cirque du Monde y está sujeta a los parámetros del servicio de mapas en línea Google Maps. Cirque du Monde y Cirque du Soleil no son responsables de errores o imprecisiones contenidas en la Cartografía del circo social o de cualquier daño que se pueda derivar de su uso.</p>
+			<p>La Cartografía del circo social sirve para uso personal o para propósitos de investigación. Se requiere la aprobación del Cirque du Monde para cualquier otro uso de la Cartografía del circo social. También se puede comunicar con nosotros a través de la siguiente dirección: cirquedumonde@cirquedusoleil.com</p>
+			<p>Cirque du Monde se reserva el derecho de modificar el contenido de la Cartografía del circo social y sus términos de uso en cualquier momento y a su entera discreción.</p>
+			<br>
+			<br>
+			<br id="about_pt">  
+			<br>
+			<br>
+			<!-- portugues -->
+			<h1>O MAPEAMENTO DO CIRCO SOCIAL DO CIRQUE DU MONDE</h1>
+            <p>O Mapeamento do circo social usa um mapa online para demarcar e indexar organizações que oferecem workshops de circo social. É o resultado de esforços empreendidos nos últimos anos pelo Cirque du Monde—o programa de circo social do Cirque du Soleil—para compilar um registro de todas as organizações dedicadas a essa forma de intervenção, bem como os vários projetos de pesquisa em andamento sobre este assunto. Hoje, o Cirque du Monde tem o prazer de compartilhar essas informações com a comunidade em geral. </p>
+            <p>O Mapeamento do circo social não tem a pretensão de ser completo ou definitivo. Foi criado para evoluir com o desenvolvimento da comunidade de circo social e com a contribuição de seus participantes. Além disso, o Mapeamento do circo social não tem o objetivo de certificar a qualidade das atividades de circo social das organizações. Seu objetivo, na verdade, é informar a comunidade sobre a existência dessas atividades, independentemente das práticas.</p>
+            <p>Se você conhecer uma ou mais organizações de circo social que não tenham sido incluídas no Mapeamento do circo social, entre em contato conosco pelo seguinte endereço: cirquedumonde@cirquedusoleil.com. Da mesma forma, se quiser reportar quaisquer erros ou imprecisões nas informações sobre qualquer organização indexada no Mapeamento do circo social, também poderá entrar em contato conosco pelo seguinte endereço: cirquedumonde@cirquedusoleil.com. Por favor, aguarde pelo menos de 4 a 8 semanas antes que a adição ou correção seja concluída.</p>
+			<br>
+			<h2>CRITÉRIOS DE IDENTIFICAÇÃO</h2>  
+			<p>As organizações incluídas no Mapeamento do circo social foram identificadas com base nos seguintes critérios:</p>
+			<ul>
+			  <li>Como parte de suas atividades, a organização oferece um programa de circo social que tem como principal objetivo o desenvolvimento pessoal e social dos participantes</li>
+			  <li>O Cirque du Monde conseguiu coletar fatos suficientes referentes às atividades de circo social da organização, seja por meio de seu website ou com base em informações disponibilizadas pela própria organização.</li>
+			</ul>	
+			<br>
+			<h2>TERMOS DE USO</h2>
+			<p>As informações geográficas apresentadas no Mapeamento do circo social são aproximadas. Tomam como base o melhor conhecimento do Cirque du Monde e estão sujeitas aos parâmetros do serviço de mapas online do Google Maps. O Cirque du Monde e o Cirque du Soleil não se responsabilizam por quaisquer erros ou imprecisões contidos no Mapeamento do circo social ou por quaisquer danos que seu uso possa causar.</p>
+			<p>O Mapeamento do circo social pode ser usado para suas necessidades pessoais ou para fins de formação e pesquisa. Qualquer outro uso do Mapeamento do circo social deverá ser previamente aprovado pelo Cirque du Monde. Você pode entrar em contato conosco pelo seguinte endereço: cirquedumonde@cirquedusoleil.com.</p>
+            <p>O Cirque du Monde se reserva o direito de alterar o conteúdo do Mapeamento do circo social e seus termos de uso a qualquer momento e a sua exclusiva discrição.</p> 
+			<br>
+			<br>
+			<br>
+			<br>  
+			</div>
+        </div>
+      </main>
+    </div>
+
+	  <!-- Footer -->
+	<footer class="page-footer font-small teal pt-4">
+    <!-- Copyright -->
+      <div class="footer-copyright text-center py-3">© <script>document.write(new Date().getFullYear()+" ")
+			</script> Copyright:
+        <a href="https://www.cirquedusoleil.com/citizenship" target="_blank"> Cirque du Soleil</a><span> and Milan Freund</span>
+      </div>
+    </footer>  
+
+	<!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="libs/jquery-slim.min.js"><\/script>')</script>
+    <script src="libs/popper.min.js"></script>
+    <script src="libs/bootstrap.min.js"></script>
+	<script>
+
+		$( '#topheader .navbar-nav a' ).on( 'click', function () {
+			$( '#topheader .navbar-nav' ).find( 'li.active' ).removeClass( 'active' );
+			$( this ).parent( 'li' ).addClass( 'active' );
+		});
+	</script>		
+</body>
+
+</html>
