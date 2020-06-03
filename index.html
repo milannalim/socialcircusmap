@@ -34,94 +34,94 @@
 
 <body>
 	<!-- bootstrap 4 nav bar -->
-	<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-		<a class="navbar-brand" href="index.html" data-toggle="tooltip" title="reload the page">social circus map</a>
-		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample03"
-			aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-		<div class="collapse navbar-collapse" id="navbarsExample03">
-			<ul class="navbar-nav mr-auto">
-				<li class="nav-item">
-					<a class="nav-link" href="about.html" data-toggle="tooltip"
-						title="information about this project">about</a>
-				</li>
-
-				<li class="nav-item">
-					<!-- trigger modal -->
-					<a class="nav-link" data-toggle="modal" data-target="#exampleModalCenter" style="cursor:pointer"
-						data-toggle="tooltip" title="if you want to add a project click here and fill a form">add a
-						project</a>
-					<!-- Modal -->
-					<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
-						aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-						<div class="modal-dialog modal-dialog-centered" role="document">
-							<div class="modal-content">
-								<div class="modal-header">
-									<h5 class="modal-title" id="exampleModalCenterTitle">add a project</h5>
-									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-										<span aria-hidden="true">&times;</span>
-									</button>
-								</div>
-								<div class="modal-body">
-
-									<div class="form-group">
-										<label for="newName" data-toggle="tooltip"
-											title="Write the name of the project you want to add here. For example: Sirko Fantastiko.">name:</label>
-										<input type="text" class="form-control" id="newName"
-											placeholder="name of the circus.." data-toggle="tooltip"
-											title="Write the name of the project you want to add here. For example: Sirko Fantastiko.">
-									</div>
-									<div class="form-group">
-										<label for="newCity" data-toggle="tooltip"
-											title="Write the city or village where the circus is located at. For example: Istanbul">city:</label>
-										<input type="text" class="form-control" id="newCity"
-											placeholder="city or village.." data-toggle="tooltip"
-											title="Write the city or village where the circus is located at. For example: Istanbul.">
-									</div>
-									<div class="form-group">
-										<label for="newCountry" data-toggle="tooltip"
-											title="Write the country where the circus is located at. For example: Turkey.">country:</label>
-										<input type="text" class="form-control" id="newCountry" placeholder="country.."
-											data-toggle="tooltip"
-											title="Write the country where the circus is located at. For example: Turkey.">
-									</div>
-									<div class="form-group">
-										<label for="newAdress" data-toggle="tooltip"
-											title="Write the adress where your project can be found (street name and number). For example: Çukur Mahallesi Zerdali Sok, Tarlabaşı Blv No.9, 34435 Beyoğlu, Türkei.">adress:</label>
-										<input type="text" class="form-control" id="newAdress" placeholder="adress.."
-											data-toggle="tooltip"
-											title="Write the adress where your project can be found (street name and number). For example: Çukur Mahallesi Zerdali Sok, Tarlabaşı Blv No.9, 34435 Beyoğlu, Türkei.">
-									</div>
-									<div class="form-group">
-										<label for="newLink" data-toggle="tooltip"
-											title="Copy and paste the link to the projects website or facebook page. For example: https://www.facebook.com/Sirko-Fantastiko-183372812260322/">link
-											to projects website:</label>
-										<input type="text" class="form-control" id="newLink" placeholder="link.."
-											data-toggle="tooltip"
-											title="Copy and paste the link to the projects website or facebook page. For example: https://www.facebook.com/Sirko-Fantastiko-183372812260322/">
-									</div>
-									<div class="modal-footer"></div>
-									<button type="button" class="btn btn-secondary" data-dismiss="modal"
-										data-toggle="tooltip"
-										title="Close this window. Back to map without adding a new project.">Close</button>
-									<a id="sendEmail" href=""><button class="btn btn-primary" data-toggle="tooltip"
-											title="Click here to submit. An email programm will open, please send the email.">Submit</button></a>
-								</div>
-							</div>
-						</div>
-					</div>
-			<!-- search form -->
-			<form class="form-inline my-2 my-md-0" id="inputForm" onSubmit="return false;">
-				<input id="txtSearch" class="form-control" type="text" placeholder="Search.." data-toggle="tooltip"
-					title="searchresults will also be listed below the map">
-				<button id="clearInput" class="btn bg-transparent" style="margin-left: -40px; z-index: 100;"
-					data-toggle="tooltip" title="clears the input, all projects will be shown again">
-					<i class="fa fa-times"></i>
-				</button>
-			</form>
-		</div>
-	</nav>
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+        <a class="navbar-brand" href="index.html" data-toggle="tooltip" title="reload the page">social circus map</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample03"
+            aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarsExample03">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="about.html" data-toggle="tooltip"
+                        title="information about this project">about</a>
+                </li>
+                <li class="nav-item">
+                    <!-- trigger modal -->
+                    <a class="nav-link" data-toggle="modal" data-target="#exampleModalCenter" style="cursor:pointer"
+                        data-toggle="tooltip" title="if you want to add a project click here and fill a form">add a
+                        project</a>
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+                        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalCenterTitle">add a project</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <!-- Modal Body-->
+                                <div class="modal-body">
+                                    <div class="form-group">
+                                        <label for="newName" data-toggle="tooltip"
+                                            title="Write the name of the project you want to add here. For example: Sirko Fantastiko.">name:</label>
+                                        <input type="text" class="form-control" id="newName"
+                                            placeholder="name of the circus.." data-toggle="tooltip"
+                                            title="Write the name of the project you want to add here. For example: Sirko Fantastiko.">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="newCity" data-toggle="tooltip"
+                                            title="Write the city or village where the circus is located at. For example: Istanbul">city:</label>
+                                        <input type="text" class="form-control" id="newCity"
+                                            placeholder="city or village.." data-toggle="tooltip"
+                                            title="Write the city or village where the circus is located at. For example: Istanbul.">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="newCountry" data-toggle="tooltip"
+                                            title="Write the country where the circus is located at. For example: Turkey.">country:</label>
+                                        <input type="text" class="form-control" id="newCountry" placeholder="country.."
+                                            data-toggle="tooltip"
+                                            title="Write the country where the circus is located at. For example: Turkey.">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="newAdress" data-toggle="tooltip"
+                                            title="Write the adress where your project can be found (street name and number). For example: Çukur Mahallesi Zerdali Sok, Tarlabaşı Blv No.9, 34435 Beyoğlu, Türkei.">adress:</label>
+                                        <input type="text" class="form-control" id="newAdress" placeholder="adress.."
+                                            data-toggle="tooltip"
+                                            title="Write the adress where your project can be found (street name and number). For example: Çukur Mahallesi Zerdali Sok, Tarlabaşı Blv No.9, 34435 Beyoğlu, Türkei.">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="newLink" data-toggle="tooltip"
+                                            title="Copy and paste the link to the projects website or facebook page. For example: https://www.facebook.com/Sirko-Fantastiko-183372812260322/">link
+                                            to projects website:</label>
+                                        <input type="text" class="form-control" id="newLink" placeholder="link.."
+                                            data-toggle="tooltip"
+                                            title="Copy and paste the link to the projects website or facebook page. For example: https://www.facebook.com/Sirko-Fantastiko-183372812260322/">
+                                    </div>
+                                    <div class="modal-footer"></div>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                                        data-toggle="tooltip"
+                                        title="Close this window. Back to map without adding a new project.">Close</button>
+                                    <a id="send-email" href=""><button class="btn btn-primary" data-toggle="tooltip"
+                                            title="Check if all the information is correct. Click here to submit.">Submit</button></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            <!-- search form -->
+            <form class="form-inline my-2 my-md-0" id="inputForm" onSubmit="return false;">
+                <input id="txtSearch" class="form-control" type="text" placeholder="Search.." data-toggle="tooltip"
+                    title="searchresults will also be listed below the map">
+                <button id="clearInput" class="btn bg-transparent" style="margin-left: -40px; z-index: 100;"
+                    data-toggle="tooltip" title="clears the input, all projects will be shown again">
+                    <i class="fa fa-times"></i>
+                </button>
+            </form>
+        </div>
+    </nav>
 
 	<!-- map container div    -->
 	<div id="map" class="jumbotron"></div>
@@ -316,7 +316,7 @@
 
 
 		// mailto auto format from add project form
-		$(document).ready(function () {
+        $(document).ready(function () {
             //Save references to elements. Don't do DOM walks in event handlers when not needed.
             var sendEmailEl = $('#send-email');
             var subjectEl = $('#newName');
