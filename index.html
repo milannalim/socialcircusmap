@@ -87,9 +87,9 @@
 											title="Write the country where the circus is located at. For example: Turkey.">
 									</div>
 									<div class="form-group">
-										<label for="newAddress" data-toggle="tooltip"
+										<label for="newAdress" data-toggle="tooltip"
 											title="Write the adress where your project can be found (street name and number). For example: Çukur Mahallesi Zerdali Sok, Tarlabaşı Blv No.9, 34435 Beyoğlu, Türkei.">adress:</label>
-										<input type="text" class="form-control" id="newAddress" placeholder="adress.."
+										<input type="text" class="form-control" id="newAdress" placeholder="adress.."
 											data-toggle="tooltip"
 											title="Write the adress where your project can be found (street name and number). For example: Çukur Mahallesi Zerdali Sok, Tarlabaşı Blv No.9, 34435 Beyoğlu, Türkei.">
 									</div>
@@ -101,32 +101,16 @@
 											data-toggle="tooltip"
 											title="Copy and paste the link to the projects website or facebook page. For example: https://www.facebook.com/Sirko-Fantastiko-183372812260322/">
 									</div>
-									<div class="form-group">
-										<label for="newContact" data-toggle="tooltip"
-											title="Please fill in your email adress, just in case any questions or problems occur .">email
-											address:</label>
-										<input type="text" class="form-control" id="newContact"
-											placeholder="contact email.." data-toggle="tooltip"
-											title="Please fill in your email adress, just in case any questions or problems occur.">
-									</div>
-
 									<div class="modal-footer"></div>
 									<button type="button" class="btn btn-secondary" data-dismiss="modal"
 										data-toggle="tooltip"
 										title="Close this window. Back to map without adding a new project.">Close</button>
 									<a id="sendEmail" href=""><button class="btn btn-primary" data-toggle="tooltip"
-											title="Check if all the information is correct. Click here to submit.">Submit</button></a>
+											title="Click here to submit. An email programm will open, please send the email.">Submit</button></a>
 								</div>
 							</div>
 						</div>
 					</div>
-				</li>
-				<!-- delete this later...-->
-				<li class="nav-item">
-					<a class="nav-link" href="mailtoooo.html" data-toggle="tooltip" title="help">Hello Brandon!</a>
-				</li>
-
-			</ul>
 			<!-- search form -->
 			<form class="form-inline my-2 my-md-0" id="inputForm" onSubmit="return false;">
 				<input id="txtSearch" class="form-control" type="text" placeholder="Search.." data-toggle="tooltip"
@@ -330,6 +314,25 @@
 		document.getElementById("noOfProjects").innerHTML = projectCount;
 
 
+
+		// mailto auto format from add project form
+		$(document).ready(function () {
+            //Save references to elements. Don't do DOM walks in event handlers when not needed.
+            var sendEmailEl = $('#send-email');
+            var subjectEl = $('#newName');
+            var bodyEl = $('#newCity');
+            var countryEl = $('#newCountry');
+            var linkEl = $('#newLink');
+            var adressEl = $('#newAdress');
+            function updateEmailLink() {
+                sendEmailEl.attr('href', 'mailto:socialcircusmap@gmail.com?' +
+                    'subject=' + encodeURIComponent('add '+ subjectEl.val()+' to map') +
+                    '&body=' + encodeURIComponent('NAME: '+ subjectEl.val() + ' CITY: '+ bodyEl.val() + ' COUNTRY: '+countryEl.val()+' LINK: '+ linkEl.val()+' ADRESS '+adressEl.val()));
+                //console.log($sendEmailEl.attr('href'));
+            }
+            $('#newName,#newCity,#newCountry,#newLink,#newAdress').on('input', updateEmailLink);
+            updateEmailLink();
+        });
 
 
 	</script>
