@@ -148,183 +148,181 @@
 
 
 
-<!-- js -->
-<script>
-    ////////////// map container////////////////// 
-    var map = L.map('map', {
-        center: [32.84267363195431, 0],
-        zoom: 2
-    });
+    <!-- js -->
+    <script>
+        ////////////// map container////////////////// 
+        var map = L.map('map', {
+            center: [32.84267363195431, 0],
+            zoom: 2
+        });
 
-    // create stamen watercolor layer //
-    var stamen_Watercolor = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.{ext}', {
-        attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-        subdomains: 'abcd',
-        minZoom: 1,
-        maxZoom: 16,
-        ext: 'jpg'
-    });
+        // create stamen watercolor layer //
+        var stamen_Watercolor = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.{ext}', {
+            attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+            subdomains: 'abcd',
+            minZoom: 1,
+            maxZoom: 16,
+            ext: 'jpg'
+        });
 
-    // create osm basemap layer //
-    var osm = L.tileLayer('https://{s}.tile.openstreetmap.de/tiles/osmde/{z}/{x}/{y}.png', {
-        maxZoom: 18,
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    });
+        // create osm basemap layer //
+        var osm = L.tileLayer('https://{s}.tile.openstreetmap.de/tiles/osmde/{z}/{x}/{y}.png', {
+            maxZoom: 18,
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        });
 
-    // add stamen layer as basemap //
-    stamen_Watercolor.addTo(map);
+        // add stamen layer as basemap //
+        stamen_Watercolor.addTo(map);
 
-    // eventlistener to get the zoomlevel //
-    map.addEventListener("zoomend", changeBasemap);
-    function changeBasemap() {
-        const zoomLevel = map.getZoom();
-        // if the zoomlevel is under 5 show osm as basemap for more details //
-        if (zoomLevel < 4 && map.hasLayer(osm)) {
-            map.removeLayer(osm);
-            stamen_Watercolor.addTo(map);
-            return;
-        }
-        // if the zoomlevel is greater 4 show stamen basemap for more beauty and less nation states //
-        if (zoomLevel > 3 && map.hasLayer(stamen_Watercolor)) {
-            map.removeLayer(stamen_Watercolor);
-            osm.addTo(map);
-            return;
-        }
-    }
-
-    // add empty marker cluster group before actually adding the point data // 
-    var markers = L.markerClusterGroup({
-        maxClusterRadius: 30
-    });
-    markers.addTo(map);
-
-    function searchCircus() {
-        markers.clearLayers()
-        var inputText = document.getElementById('txtSearch').value.toLowerCase();
-        //console.log('searched for:', inputText);
-        var searchArray = [];
-
-        if (inputText === "") {
-
-            for (i = 0; i < zirkusArray.length; i++) {
-
-                var lat = zirkusArray[i][1].toFixed(4);
-                var lon = zirkusArray[i][2].toFixed(4);
-                var zirkusName = zirkusArray[i][0];
-                var zirkusCity = zirkusArray[i][3];
-                var zirkusCountry = zirkusArray[i][4];
-                var zirkusLink = zirkusArray[i][5];
-
-                //variable für den marker anlegen
-                var zirkusMarker = L.marker([lat, lon]);
-                //die marker der clustergruppe hinzufügen
-                markers.addLayer(zirkusMarker);
-
-                // Popup mit HTML erstellen  // Popup an Marker anbinden	
-                zirkusMarker.bindPopup('<a href="' + zirkusLink + '" target="_blank">' + zirkusName + '</a>' + '<br>' + zirkusCity + ', ' + zirkusCountry);
-                // in case the linklist is not clear.. clear it //
-                document.getElementById("searchResults").innerHTML = '';
+        // eventlistener to get the zoomlevel //
+        map.addEventListener("zoomend", changeBasemap);
+        function changeBasemap() {
+            const zoomLevel = map.getZoom();
+            // if the zoomlevel is under 5 show osm as basemap for more details //
+            if (zoomLevel < 4 && map.hasLayer(osm)) {
+                map.removeLayer(osm);
+                stamen_Watercolor.addTo(map);
+                return;
             }
+            // if the zoomlevel is greater 4 show stamen basemap for more beauty and less nation states //
+            if (zoomLevel > 3 && map.hasLayer(stamen_Watercolor)) {
+                map.removeLayer(stamen_Watercolor);
+                osm.addTo(map);
+                return;
+            }
+        }
 
-        } else {
+        // add empty marker cluster group before actually adding the point data // 
+        var markers = L.markerClusterGroup({
+            maxClusterRadius: 30
+        });
+        markers.addTo(map);
 
-            for (i = 0; i < zirkusArray.length; i++) {
-                var name = zirkusArray[i][0].toLowerCase();
-                var lat = zirkusArray[i][1];
-                var lon = zirkusArray[i][2];
-                var city = zirkusArray[i][3].toLowerCase();
-                var country = zirkusArray[i][4].toLowerCase();
-                var zirkusLink = zirkusArray[i][5];
-                if ((name.indexOf(inputText) != -1) || (city.indexOf(inputText) != -1) || (country.indexOf(inputText) != -1)) {
-                    //	console.log('Found!');
-                    searchArray.push(zirkusArray[i]);
+        function searchCircus() {
+            markers.clearLayers()
+            var inputText = document.getElementById('txtSearch').value.toLowerCase();
+            //console.log('searched for:', inputText);
+            var searchArray = [];
+
+            if (inputText === "") {
+
+                for (i = 0; i < zirkusArray.length; i++) {
+
+                    var lat = zirkusArray[i][1].toFixed(4);
+                    var lon = zirkusArray[i][2].toFixed(4);
+                    var zirkusName = zirkusArray[i][0];
+                    var zirkusCity = zirkusArray[i][3];
+                    var zirkusCountry = zirkusArray[i][4];
+                    var zirkusLink = zirkusArray[i][5];
+
+                    //variable für den marker anlegen
+                    var zirkusMarker = L.marker([lat, lon]);
+                    //die marker der clustergruppe hinzufügen
+                    markers.addLayer(zirkusMarker);
+
+                    // Popup mit HTML erstellen  // Popup an Marker anbinden	
+                    zirkusMarker.bindPopup('<a href="' + zirkusLink + '" target="_blank">' + zirkusName + '</a>' + '<br>' + zirkusCity + ', ' + zirkusCountry);
+                    // in case the linklist is not clear.. clear it //
+                    document.getElementById("searchResults").innerHTML = '';
+                }
+
+            } else {
+
+                for (i = 0; i < zirkusArray.length; i++) {
+                    var name = zirkusArray[i][0].toLowerCase();
+                    var lat = zirkusArray[i][1];
+                    var lon = zirkusArray[i][2];
+                    var city = zirkusArray[i][3].toLowerCase();
+                    var country = zirkusArray[i][4].toLowerCase();
+                    var zirkusLink = zirkusArray[i][5];
+                    if ((name.indexOf(inputText) != -1) || (city.indexOf(inputText) != -1) || (country.indexOf(inputText) != -1)) {
+                        //	console.log('Found!');
+                        searchArray.push(zirkusArray[i]);
+                    }
+                }
+                searchArray = searchArray.sort();
+                console.log(searchArray);
+                for (i = 0; i < searchArray.length; i++) {
+                    var name = searchArray[i][0].toLowerCase();
+                    var lat = searchArray[i][1];
+                    var lon = searchArray[i][2];
+                    var city = searchArray[i][3].toLowerCase();
+                    var country = searchArray[i][4].toLowerCase();
+                    var zirkusLink = searchArray[i][5];
+
+                    //variable für den marker anlegen
+                    var zirkusMarker = L.marker([lat, lon]);
+                    //add markers to clustergroup
+                    markers.addLayer(zirkusMarker);
+
+                    // edit poput  // bind to markers //	
+                    zirkusMarker.bindPopup('<a href="' + zirkusLink + '" target="_blank">' + name + '</a>' + '<br>' + city + ', ' + country);
+                }
+
+                document.getElementById("searchResults").innerHTML = '<h4>' + "Searched for: " + inputText + '</h4>' + '<p>' + "Click on the links to visit the project homepgages." + '<br>' + "Or change your search." + '</p>' + '<input id="txtSearchBelow" class="form-control" type="text" placeholder="Search..">' + '<br>';
+                //console.log("searchbar");
+
+                var inputBelow = document.getElementById("txtSearchBelow");
+                console.log(inputBelow);
+                console.log('Bis hierher läuft es noch ganz gut.');
+                var element = document.getElementById("txtSearchBelow");
+
+                //If it isn't "undefined" and it isn't "null", then it exists.
+                if (typeof (element) != 'undefined' && element != null) {
+                    setTimeout(function () {
+                        // Code executed after 2 seconds as there was a problem before  								
+
+                        var inputBelow = document.getElementById("txtSearchBelow");
+                        inputBelow.value = inputText
+                        inputBelow.addEventListener("keyup", function (event) {
+                            // Number 13 is the "Enter" key on the keyboard
+                            if (event.keyCode === 13) {
+                                // Cancel the default action, if needed
+                                event.preventDefault();
+                                document.getElementById("txtSearch").value = inputBelow.value;
+                                searchCircus();
+                            }
+                        });
+                    }, 1000);
+                } else {
+                    console.log('Element does not exist!');
+                }
+
+                searchArray.forEach(fillSearchList);
+                function fillSearchList(item, index) {
+                    document.getElementById("searchResults").innerHTML += '<a href="' + item[5] + '" target="_blank">' + item[0] + '</a><br>';
                 }
             }
-            searchArray = searchArray.sort();
-            console.log(searchArray);
-            for (i = 0; i < searchArray.length; i++) {
-                var name = searchArray[i][0].toLowerCase();
-                var lat = searchArray[i][1];
-                var lon = searchArray[i][2];
-                var city = searchArray[i][3].toLowerCase();
-                var country = searchArray[i][4].toLowerCase();
-                var zirkusLink = searchArray[i][5];
-
-                //variable für den marker anlegen
-                var zirkusMarker = L.marker([lat, lon]);
-                //add markers to clustergroup
-                markers.addLayer(zirkusMarker);
-
-                // edit poput  // bind to markers //	
-                zirkusMarker.bindPopup('<a href="' + zirkusLink + '" target="_blank">' + name + '</a>' + '<br>' + city + ', ' + country);
-            }
-
-            document.getElementById("searchResults").innerHTML = '<h4>' + "Searched for: " + inputText + '</h4>' + '<p>' + "Click on the links to visit the project homepgages." + '<br>' + "Or change your search." + '</p>' + '<input id="txtSearchBelow" class="form-control" type="text" placeholder="Search..">' + '<br>';
-            //console.log("searchbar");
-
-            var inputBelow = document.getElementById("txtSearchBelow");
-            console.log(inputBelow);
-            console.log('Bis hierher läuft es noch ganz gut.');
-            var element = document.getElementById("txtSearchBelow");
-
-            //If it isn't "undefined" and it isn't "null", then it exists.
-            if (typeof (element) != 'undefined' && element != null) {
-                setTimeout(function () {
-                    // Code executed after 2 seconds as there was a problem before  								
-
-                    var inputBelow = document.getElementById("txtSearchBelow");
-                    inputBelow.value = inputText
-                    inputBelow.addEventListener("keyup", function (event) {
-                        // Number 13 is the "Enter" key on the keyboard
-                        if (event.keyCode === 13) {
-                            // Cancel the default action, if needed
-                            event.preventDefault();
-                            document.getElementById("txtSearch").value = inputBelow.value;
-                            searchCircus();
-                        }
-                    });
-                }, 1000);
-            } else {
-                console.log('Element does not exist!');
-            }
-
-            searchArray.forEach(fillSearchList);
-            function fillSearchList(item, index) {
-                document.getElementById("searchResults").innerHTML += '<a href="' + item[5] + '" target="_blank">' + item[0] + '</a><br>';
-            }
         }
-    }
 
-    // Get the input field
-    var input = document.getElementById("txtSearch");
-    // Execute a function when the user releases a key on the keyboard
-    input.addEventListener("keyup", function (event) {
-        // Number 13 is the "Enter" key on the keyboard
-        if (event.keyCode === 13) {
-            // Cancel the default action, if needed
-            event.preventDefault();
-            searchCircus();
-        }
-    });
+        // Get the input field
+        var input = document.getElementById("txtSearch");
+        // Execute a function when the user releases a key on the keyboard
+        input.addEventListener("keyup", function (event) {
+            // Number 13 is the "Enter" key on the keyboard
+            if (event.keyCode === 13) {
+                // Cancel the default action, if needed
+                event.preventDefault();
+                searchCircus();
+            }
+        });
 
-    // call the function to initially fill the map with the markers //
-    searchCircus();
-
-    // clear the search field on x-button click //
-    var clearIt = document.getElementById("clearInput");
-    clearIt.addEventListener("mouseup", function () {
-        document.getElementById("txtSearch").value = "";
+        // call the function to initially fill the map with the markers //
         searchCircus();
-        document.getElementById("txtSearch").focus();
-    });
 
-</script>
+        // clear the search field on x-button click //
+        var clearIt = document.getElementById("clearInput");
+        clearIt.addEventListener("mouseup", function () {
+            document.getElementById("txtSearch").value = "";
+            searchCircus();
+            document.getElementById("txtSearch").focus();
+        });
 
+        // just the lil project counter below the map
+        projectCount = zirkusArray.length;
+        document.getElementById("noOfProjects").innerHTML = projectCount;
 
-
-
-
-
+    </script>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
@@ -335,7 +333,8 @@
     <script>window.jQuery || document.write('<script src="libs/jquery-slim.min.js"><\/script>')</script>
     <script src="libs/popper.min.js"></script>
     <script src="libs/bootstrap.min.js"></script>
-
+    
+    <!-- Autofill mailto from add project form -->
     <script>
         $(document).ready(function () {
             //Save references to elements. Don't do DOM walks in event handlers when not needed.
@@ -356,10 +355,8 @@
         });
 
 
-        
-		// just the lil project counter below the map
-		projectCount = zirkusArray.length;
-		document.getElementById("noOfProjects").innerHTML = projectCount;
+
+
 
 
 
